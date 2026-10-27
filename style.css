@@ -1,0 +1,483 @@
+
+/* ========================================
+   1. VARIÁVEIS E CORES DO PROJETO
+======================================== */
+
+:root {
+  --cor-principal: #2563eb;
+  --cor-principal-hover: #1d4ed8;
+  --cor-fundo: #f8fafc;
+  --cor-superficie: #ffffff;
+  --cor-texto: #0f172a;
+  --cor-texto-secundario: #64748b;
+  --cor-borda: #e2e8f0;
+  --cor-sucesso: #15803d;
+  --cor-erro: #dc2626;
+
+  --raio-pequeno: 8px;
+  --raio-medio: 12px;
+  --raio-grande: 20px;
+
+  --sombra-painel: 0 12px 35px rgb(15 23 42 / 6%);
+}
+
+/* ========================================
+   2. RESET E CONFIGURAÇÕES GERAIS
+======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgb(37 99 235 / 35%);
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ========================================
+   3. ESTRUTURA PRINCIPAL
+======================================== */
+
+.aplicativo {
+  width: min(1120px, calc(100% - 48px));
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.cabecalho {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cor-texto);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.marca-icone {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: var(--raio-pequeno);
+  background: var(--cor-principal);
+  color: white;
+  font-size: 25px;
+}
+
+/* ========================================
+   4. LAYOUT DAS DUAS COLUNAS
+======================================== */
+
+.conteudo {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: center;
+  gap: 72px;
+  padding: 64px 0;
+}
+
+.introducao {
+  max-width: 480px;
+}
+
+.etiqueta {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--cor-principal);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.introducao h1 {
+  max-width: 450px;
+  margin-bottom: 20px;
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+}
+
+.introducao > p {
+  color: var(--cor-texto-secundario);
+  font-size: 17px;
+}
+
+.explicacao {
+  margin-top: 44px;
+  padding-left: 20px;
+  border-left: 3px solid var(--cor-borda);
+}
+
+.explicacao h2 {
+  margin-bottom: 12px;
+  font-size: 17px;
+}
+
+.explicacao p {
+  margin-bottom: 12px;
+  color: var(--cor-texto-secundario);
+  font-size: 14px;
+}
+
+.explicacao p:last-child {
+  margin-bottom: 0;
+}
+
+/* ========================================
+   5. PAINEL DO FORMULÁRIO
+======================================== */
+
+.painel {
+  min-width: 0;
+  padding: 32px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-grande);
+  background: var(--cor-superficie);
+  box-shadow: var(--sombra-painel);
+}
+
+.painel > h2 {
+  margin-bottom: 28px;
+  font-size: 21px;
+  letter-spacing: -0.5px;
+}
+
+/* ========================================
+   6. CAMPOS DO FORMULÁRIO
+======================================== */
+
+#formulario-sorteio {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.campo {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.campo input {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pequeno);
+  background: #ffffff;
+  color: var(--cor-texto);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.campo input::placeholder {
+  color: #94a3b8;
+}
+
+.campo input:hover {
+  border-color: #cbd5e1;
+}
+
+.campo input:focus {
+  border-color: var(--cor-principal);
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 10%);
+}
+
+.grupo-campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* ========================================
+   7. OPÇÃO DE NÃO REPETIR
+======================================== */
+
+.opcao-repeticao {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-medio);
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.opcao-repeticao input {
+  width: 17px;
+  height: 17px;
+  margin-top: 4px;
+  accent-color: var(--cor-principal);
+  flex-shrink: 0;
+}
+
+.opcao-repeticao span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.opcao-repeticao strong {
+  font-size: 13px;
+}
+
+.opcao-repeticao small {
+  color: var(--cor-texto-secundario);
+  font-size: 12px;
+}
+
+/* ========================================
+   8. BOTÃO DE SORTEIO
+======================================== */
+
+#botao-sortear {
+  min-height: 50px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--raio-pequeno);
+  background: var(--cor-principal);
+  color: #ffffff;
+  font-weight: 700;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+#botao-sortear:hover {
+  background: var(--cor-principal-hover);
+}
+
+#botao-sortear:active {
+  transform: scale(0.98);
+}
+
+#botao-sortear:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* ========================================
+   9. MENSAGENS DE ESTADO
+======================================== */
+
+.mensagem {
+  margin-top: 16px;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.mensagem:empty {
+  display: none;
+}
+
+.mensagem.erro {
+  padding: 12px 14px;
+  border: 1px solid #fecaca;
+  border-radius: var(--raio-pequeno);
+  background: #fef2f2;
+  color: var(--cor-erro);
+}
+
+.mensagem.sucesso {
+  padding: 12px 14px;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--raio-pequeno);
+  background: #f0fdf4;
+  color: var(--cor-sucesso);
+}
+
+/* ========================================
+   10. ÁREA DE RESULTADOS
+======================================== */
+
+.area-resultados {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.area-resultados h2 {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.resultados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+  gap: 12px;
+}
+
+.numero-sorteado {
+  display: grid;
+  min-width: 0;
+  min-height: 64px;
+  place-items: center;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--raio-medio);
+  background: #eff6ff;
+  color: var(--cor-principal);
+  font-size: 22px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  animation: aparecer 0.35s ease both;
+}
+
+/* ========================================
+   11. ANIMAÇÃO DOS RESULTADOS
+======================================== */
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ========================================
+   12. RODAPÉ
+======================================== */
+
+.rodape {
+  padding: 24px 0;
+  border-top: 1px solid var(--cor-borda);
+  color: var(--cor-texto-secundario);
+  text-align: center;
+  font-size: 12px;
+}
+
+/* ========================================
+   13. RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 800px) {
+  .conteudo {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 40px 0;
+  }
+
+  .introducao {
+    max-width: 600px;
+  }
+
+  .introducao h1 {
+    max-width: 520px;
+  }
+
+  .explicacao {
+    margin-top: 28px;
+  }
+
+  .painel {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aplicativo {
+    width: calc(100% - 32px);
+  }
+
+  .cabecalho {
+    padding: 20px 0;
+  }
+
+  .conteudo {
+    gap: 28px;
+    padding: 32px 0;
+  }
+
+  .introducao h1 {
+    font-size: 34px;
+    letter-spacing: -1px;
+  }
+
+  .introducao > p {
+    font-size: 15px;
+  }
+
+  .painel {
+    padding: 22px 18px;
+    border-radius: var(--raio-medio);
+  }
+
+  .grupo-campos {
+    gap: 10px;
+  }
+
+  .campo input {
+    padding: 0 10px;
+  }
+
+  .resultados {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ========================================
+   14. ACESSIBILIDADE: MOVIMENTO REDUZIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

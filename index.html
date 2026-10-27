@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Sorteie números de forma simples, rápida e personalizada."
+  >
+
+  <title>Sorteador de Números</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main class="aplicativo">
+    <header class="cabecalho">
+      <a class="marca" href="#" aria-label="Sorteador de Números">
+        <span class="marca-icone" aria-hidden="true">#</span>
+        <span>Sorteador</span>
+      </a>
+    </header>
+
+    <section class="conteudo">
+      <div class="introducao">
+        <span class="etiqueta">SIMPLES E ALEATÓRIO</span>
+
+        <h1>Sorteador de Números</h1>
+
+        <p>
+          Defina seu intervalo, escolha a quantidade
+          e deixe o sorteio acontecer.
+        </p>
+
+        <section class="explicacao" aria-labelledby="titulo-explicacao">
+          <h2 id="titulo-explicacao">Como funciona?</h2>
+
+          <p>
+            Informe o menor e o maior número do intervalo,
+            escolha quantos números deseja sortear e clique
+            no botão para gerar seus resultados.
+          </p>
+
+          <p>
+            Você também pode ativar a opção de não repetir
+            números para obter resultados únicos.
+          </p>
+        </section>
+      </div>
+
+      <section class="painel" aria-labelledby="titulo-formulario">
+        <h2 id="titulo-formulario">Configure seu sorteio</h2>
+
+        <form id="formulario-sorteio">
+          <div class="campo">
+            <label for="quantidade">Quantidade de números</label>
+            <input
+              type="number"
+              id="quantidade"
+              name="quantidade"
+              min="1"
+              step="1"
+              placeholder="Ex.: 3"
+              required
+            >
+          </div>
+
+          <div class="grupo-campos">
+            <div class="campo">
+              <label for="valor-minimo">Valor mínimo</label>
+              <input
+                type="number"
+                id="valor-minimo"
+                name="valor-minimo"
+                step="1"
+                placeholder="Ex.: 1"
+                required
+              >
+            </div>
+
+            <div class="campo">
+              <label for="valor-maximo">Valor máximo</label>
+              <input
+                type="number"
+                id="valor-maximo"
+                name="valor-maximo"
+                step="1"
+                placeholder="Ex.: 100"
+                required
+              >
+            </div>
+          </div>
+
+          <label class="opcao-repeticao" for="nao-repetir">
+            <input
+              type="checkbox"
+              id="nao-repetir"
+              name="nao-repetir"
+              checked
+            >
+
+            <span>
+              <strong>Não repetir números</strong>
+              <small>Cada número será único no resultado.</small>
+            </span>
+          </label>
+
+          <button type="submit" id="botao-sortear">
+            Sortear números
+          </button>
+        </form>
+
+        <div
+          id="mensagem"
+          class="mensagem"
+          role="status"
+          aria-live="polite"
+        ></div>
+
+        <section
+          id="area-resultados"
+          class="area-resultados"
+          aria-labelledby="titulo-resultados"
+          aria-live="polite"
+          hidden
+        >
+          <h2 id="titulo-resultados">Seus números sorteados</h2>
+          <div id="resultados" class="resultados"></div>
+        </section>
+      </section>
+    </section>
+
+    <footer class="rodape">
+      <p>Feito para praticar e evoluir no desenvolvimento web.</p>
+    </footer>
+  </main>
+</body>
+</html>
